@@ -29,7 +29,7 @@ class PageOnePage extends StatelessWidget {
         pageBuilder: (BuildContext context, Animation<double> animation,
                 Animation<double> secondaryAnimation) =>
             const PageTwoPage(),
-        // transitionDuration: const Duration(milliseconds: 800),
+        transitionDuration: const Duration(milliseconds: 500),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
 
@@ -44,8 +44,15 @@ class PageOnePage extends StatelessWidget {
           //   scale: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
           // );
 
-          return RotationTransition(
-              child: child, turns: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation));
+          // return RotationTransition(
+          //     child: child, turns: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation));
+
+          // return FadeTransition(
+          //     child: child, opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation));
+
+          return SizeTransition(
+              child: child,
+              sizeFactor: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation));
         });
   }
 }
