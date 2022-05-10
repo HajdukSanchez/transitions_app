@@ -29,14 +29,19 @@ class PageOnePage extends StatelessWidget {
         pageBuilder: (BuildContext context, Animation<double> animation,
                 Animation<double> secondaryAnimation) =>
             const PageTwoPage(),
-        transitionDuration: const Duration(milliseconds: 800),
+        // transitionDuration: const Duration(milliseconds: 800),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           final curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
 
-          return SlideTransition(
-            position: Tween<Offset>(begin: const Offset(0.5, 1.0), end: Offset.zero)
-                .animate(curvedAnimation),
-            child: child, // Widget to animate
+          // return SlideTransition(
+          //   position: Tween<Offset>(begin: const Offset(0.5, 1.0), end: Offset.zero)
+          //       .animate(curvedAnimation),
+          //   child: child, // Widget to animate
+          // );
+
+          return ScaleTransition(
+            child: child,
+            scale: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
           );
         });
   }
