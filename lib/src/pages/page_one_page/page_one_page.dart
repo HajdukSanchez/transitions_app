@@ -39,10 +39,13 @@ class PageOnePage extends StatelessWidget {
           //   child: child, // Widget to animate
           // );
 
-          return ScaleTransition(
-            child: child,
-            scale: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
-          );
+          // return ScaleTransition(
+          //   child: child,
+          //   scale: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
+          // );
+
+          return RotationTransition(
+              child: child, turns: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation));
         });
   }
 }
